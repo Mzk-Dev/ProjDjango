@@ -1,0 +1,14 @@
+{% extends "basic.html" %}
+{% block title %}
+    Добавление комментария
+{% endblock %}
+{% block content %}
+    <h1>Название проекта : {{ project.title }}</h1>
+    <h2>Добавление комментария </h2>
+        <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Добавить">
+    </form>
+
+{% endblock %}

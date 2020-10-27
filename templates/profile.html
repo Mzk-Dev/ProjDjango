@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+{% extends 'basic.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+ <h2>{{ user.get_full_name }}</h2>
+<ul>
+  <li>User : {{ user.profile.user }}</li>
+    {% if user.profile.avatar %}
+    <li>Ava:<img src="{{ user.profile.avatar.url }}"></li>
+    {% endif %}
+  <li>Location: {{ user.profile.location }}</li>
+  <li>Birth Date: {{ user.profile.birth_date }}</li>
+    <li>Email : {{ user.profile.email }}</li>
+<li><a href={% url 'edit'  %}><h1>Редактировать профиль</h1></a></li>
+{% endblock %}
+</ul>

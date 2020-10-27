@@ -1,0 +1,30 @@
+{% extends 'basic.html' %}
+    {% block headers %}
+        {{ block.super }}|Companys
+    {% endblock %}
+    {% block content %}
+
+
+    <div>
+        <h1> Компания  : {{company.name }}</h1>
+        <p>Директор компании : {{ company.author }}</p>
+        <p>Описание : {{ company.description }}</p>
+        <p>Адрес : {{ company.address }}</p>
+        <p> Номер телефона : {{ company.phone }}</p>
+        <p> Mail : {{ company.email }}</p>
+        <p> Дата создания : {{company.created }}</p>
+    {% for p in project %}
+        <h1>Название проекта : {{ p.title }}</h1>
+        <p>Компания :  {{ p.company }}</p>
+        <p>Описание : {{ p.body }}</p>
+        <p> Автор статьи : {{ p.author }}</p>
+        <p> Цена : {{ p.price }}</p>
+        <p>Пост создан : {{ p.created }}</p>
+        <p>Дата завершения : {{ p.done }}</p>
+    {% endfor %}
+
+
+    </div>
+
+
+    {% endblock %}

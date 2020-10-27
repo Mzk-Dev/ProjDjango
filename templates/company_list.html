@@ -1,0 +1,22 @@
+{% extends 'basic.html' %}
+    {% block headers %}
+        {{ block.super }}Companys
+    {% endblock %}
+    {% block content %}
+    {% csrf_token %}
+    {% for c in companys %}
+    <div>
+        <h1> Компания  : <a href={% url 'company_detail' c.pk %}>{{c.name }}</a></h1>
+        <p>Директор компании : {{ c.author }}</p>
+        <p>Описание : {{ c.description }}</p>
+        <p>Адрес : {{ c.address }}</p>
+        <p> Номер телефона : {{ c.phone }}</p>
+        <p> Mail : {{ c.email }}</p>
+        <p> Дата создания : {{ c.created }}</p>
+
+
+    </div>
+    {% endfor %}
+
+    {% endblock %}
+

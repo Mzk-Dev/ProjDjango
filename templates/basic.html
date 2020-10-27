@@ -1,0 +1,44 @@
+{#{% load staticfiles %}#}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="styleheet" href="mysite/style.css">
+     <meta http-equiv="content-type" content="text/html" charset="UTF-8">
+    <title>Title</title>
+    {% if user.is_authenticated %}
+        <h1> Здравствуйте {{ user }} </h1>
+    {% endif %}
+</head>
+<body>
+<ul>
+    {% if user.is_authenticated %}
+    <li><a href={% url 'profile'  %}><h1>Профиль</h1></a></li>
+    {% endif %}
+<li><a href={% url 'companys'  %}><h1>Компании</h1> </a></li>
+<li><a href={% url 'projects' %}><h1>Проекты</h1></a></li>
+<li><a href={% url 'signup' %}><h1>Создать аккаунт</h1></a></li>
+<li><a href={% url 'login' %}><h1>Вход</h1></a></li>
+    <li><a href={% url 'logout' %}><h1>Выход</h1></a></li>
+
+</ul>
+<h1>
+    {% block headers %}
+
+    {% endblock headers %}
+</h1>
+{% block content %}
+{% endblock content %}
+<div class="pagination">
+ <span class="step-links">
+  {% if page.has_previous %}
+      <a href="?page={{ page.previous_page_number }}">Previous</a>
+  {% endif %}
+    <span class="current">
+  Page {{ page.number }} of {{ page.paginator.num_pages }}.
+    </span>
+  {% if page.has_next %}
+        <a href="?page={{ page.next_page_number }}">Next</a>
+  {% endif %}
+  </span>
+</div>
+
